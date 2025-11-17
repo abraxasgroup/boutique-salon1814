@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Salon 1814 – Uñas y Belleza</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header__content">
+      <div class="logo">
+        <span class="logo__title">Boutique Salon 1814</span>
+      </div>
+
+      <nav class="nav" id="mainNav">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#tienda">Tienda</a>
+        <a href="#turnos">Turnos</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#tips">Tips & Reels</a>
+        <a href="#sobre-ivi">Sobre Ivi</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <button class="btn btn--primary header__cta">
+        Reservar turno
+      </button>
+
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg">
+        <!-- Reemplazá esta ruta por la foto real del local -->
+        <img src="img/local-hero.jpg" alt="Interior de Boutique Salon 1814" />
+        <div class="hero__overlay"></div>
+      </div>
+
+      <div class="container hero__content">
+        <div class="card glass hero__card">
+          <p class="hero__badge">By Ivi ✨</p>
+          <h1>Boutique Salon 1814</h1>
+          <p class="hero__text">
+            Uñas, belleza y cuidado de manos en un espacio pensado para vos.
+          </p>
+          <div class="hero__actions">
+            <a href="#turnos" class="btn btn--primary">Reservar turno online</a>
+            <a href="#tienda" class="btn btn--secondary">Ver tienda</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <header class="section__header">
+          <h2>Servicios destacados</h2>
+          <p>Cuidamos cada detalle para que tus manos y pies se vean increíbles.</p>
+        </header>
+
+        <div class="grid grid--3">
+          <article class="card service-card">
+            <h3>Manicuría semipermanente</h3>
+            <p>Esmaltado prolijo, brillo intenso y duración extendida.</p>
+            <span class="pill">Desde $X • 60 min</span>
+          </article>
+
+          <article class="card service-card">
+            <h3>Kapping</h3>
+            <p>Refuerzo perfecto para uñas frágiles sin perder naturalidad.</p>
+            <span class="pill">Desde $X • 75 min</span>
+          </article>
+
+          <article class="card service-card">
+            <h3>Pedicura</h3>
+            <p>Relajación, cuidado y esmaltado para tus pies.</p>
+            <span class="pill">Desde $X • 60 min</span>
+          </article>
+        </div>
+
+        <div class="section__actions">
+          <a href="#turnos" class="btn btn--secondary">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TURNOS ONLINE -->
+    <section class="section section--alt" id="turnos">
+      <div class="container turnos">
+        <div class="turnos__text">
+          <h2>Tu turno en 2 clics ✨</h2>
+          <p>
+            Elegí el servicio, seleccioná día y horario, pagá la seña y listo.
+            Sin esperar respuestas por mensaje.
+          </p>
+          <ol class="steps">
+            <li>Elegís el servicio.</li>
+            <li>Elegís día y horario.</li>
+            <li>Pagás la seña y tu turno queda confirmado.</li>
+          </ol>
+          <!-- Acá después linkeamos a la mini SaaS real -->
+          <a href="#" class="btn btn--primary">Abrir agenda online</a>
+        </div>
+
+        <div class="turnos__mockup">
+          <div class="phone-3d">
+            <div class="phone-3d__screen">
+              <div class="phone-ui">
+                <h4>Agenda Boutique</h4>
+                <p>Elegí tu servicio:</p>
+                <ul>
+                  <li>💅 Manicuría semipermanente</li>
+                  <li>✨ Kapping</li>
+                  <li>🦶 Pedicura</li>
+                </ul>
+                <span class="phone-ui__hint">Demo – vista ilustrativa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIENDA -->
+    <section class="section" id="tienda">
+      <div class="container">
+        <header class="section__header">
+          <h2>Tienda Boutique</h2>
+          <p>Productos que Ivi usa y recomienda en el salón.</p>
+        </header>
+
+        <div class="filters">
+          <button class="chip chip--active">Todos</button>
+          <button class="chip">Manos</button>
+          <button class="chip">Pies</button>
+          <button class="chip">Kits</button>
+          <button class="chip">Ofertas</button>
+        </div>
+
+        <div class="grid grid--4">
+          <!-- Card producto 1 -->
+          <article class="card product-card">
+            <div class="product-card__img">
+              <img src="img/producto-1.jpg" alt="Producto de uñas" />
+            </div>
+            <h3>Esmalte semipermanente</h3>
+            <p>Color duradero y brillo intenso.</p>
+            <span class="product-card__price">$X</span>
+            <button class="btn btn--secondary btn--small">Consultar por WhatsApp</button>
+          </article>
+
+          <!-- Duplicar y cambiar nombre/imagen para más productos -->
+          <article class="card product-card">
+            <div class="product-card__img">
+              <img src="img/producto-2.jpg" alt="Kit de cuidado" />
+            </div>
+            <h3>Kit cuidado de manos</h3>
+            <p>Ideal para mantener tus manos suaves en casa.</p>
+            <span class="product-card__price">$X</span>
+            <button class="btn btn--secondary btn--small">Consultar por WhatsApp</button>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-card__img">
+              <img src="img/producto-3.jpg" alt="Tratamiento pies" />
+            </div>
+            <h3>Tratamiento pies</h3>
+            <p>Perfecto complemento de tu pedicura.</p>
+            <span class="product-card__price">$X</span>
+            <button class="btn btn--secondary btn--small">Consultar por WhatsApp</button>
+          </article>
+
+          <article class="card product-card">
+            <div class="product-card__img">
+              <img src="img/producto-4.jpg" alt="Accesorios" />
+            </div>
+            <h3>Accesorios Boutique</h3>
+            <p>Detalles que marcan la diferencia.</p>
+            <span class="product-card__price">$X</span>
+            <button class="btn btn--secondary btn--small">Consultar por WhatsApp</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CURSOS -->
+    <section class="section section--highlight" id="cursos">
+      <div class="container cursos">
+        <div class="card glass cursos__card">
+          <h2>Cursos Boutique Salon 1814 – Próximamente</h2>
+          <p>
+            Sumate a la lista de espera para los cursos de manicuría,
+            perfeccionamiento y más.
+          </p>
+          <form class="form">
+            <input type="text" placeholder="Tu nombre" />
+            <input type="tel" placeholder="Tu WhatsApp" />
+            <input type="email" placeholder="Tu email" />
+            <button class="btn btn--primary" type="submit">
+              Quiero que me avises
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS & REELS -->
+    <section class="section" id="tips">
+      <div class="container">
+        <header class="section__header">
+          <h2>Tips & Reels</h2>
+          <p>Consejos rápidos para cuidar tus uñas entre turnos.</p>
+        </header>
+
+        <div class="grid grid--3">
+          <article class="card video-card">
+            <div class="video-card__thumb">
+              <span class="video-card__play">▶</span>
+            </div>
+            <h3>Cómo cuidar tu esmaltado semipermanente</h3>
+          </article>
+
+          <article class="card video-card">
+            <div class="video-card__thumb">
+              <span class="video-card__play">▶</span>
+            </div>
+            <h3>Errores comunes que arruinan tus uñas</h3>
+          </article>
+
+          <article class="card video-card">
+            <div class="video-card__thumb">
+              <span class="video-card__play">▶</span>
+            </div>
+            <h3>Tips de hidratación diaria</h3>
+          </article>
+        </div>
+
+        <div class="section__actions">
+          <a href="https://www.instagram.com/boutique__salon1814/"
+             target="_blank"
+             class="btn btn--secondary">
+            Ver más en Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE IVI -->
+    <section class="section section--alt" id="sobre-ivi">
+      <div class="container about">
+        <div class="about__photo">
+          <div class="about__circle">
+            <img src="img/ivi.jpg" alt="Ivi, dueña de Boutique Salon 1814" />
+          </div>
+        </div>
+        <div class="about__text">
+          <h2>Conocé a Ivi</h2>
+          <p>
+            Ivana (Ivi para los amigos) creó Boutique Salon 1814 como un espacio
+            íntimo, prolijo y cálido, donde cada detalle importa y cada clienta
+            se siente cuidada.
+          </p>
+          <div class="tags">
+            <span class="tag">Perfeccionista</span>
+            <span class="tag">Atención personalizada</span>
+            <span class="tag">Amor por el detalle</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="contacto">
+    <div class="container footer__content">
+      <div>
+        <h3>Boutique Salon 1814</h3>
+        <p>Uñas, belleza y cuidado de manos.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p>Dirección: [Agregar dirección real]</p>
+        <p>WhatsApp: <a href="https://wa.me/">+54 9 ...</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/boutique__salon1814/" target="_blank">@boutique__salon1814</a></p>
+      </div>
+      <div>
+        <h4>Horarios</h4>
+        <p>Lunes a Sábado</p>
+        <p>[Agregar horario]</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© Boutique Salon 1814</span>
+      <span>Desarrollado por Abraxas Group</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
