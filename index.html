@@ -2,43 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Boutique Salon 1814</title>
+  <title>Boutique Salon 1814 – Cañuelas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Tailwind CDN para no escribir mil CSS -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Glow suave para el botón flotante de WhatsApp */
+    .whatsapp-neon {
+      box-shadow:
+        0 0 10px rgba(34, 197, 94, 0.8),
+        0 0 20px rgba(34, 197, 94, 0.6),
+        0 0 30px rgba(34, 197, 94, 0.4);
+    }
+  </style>
 </head>
 
 <body class="bg-slate-950 text-slate-50">
-  <!-- HEADER / HERO -->
-  <header class="min-h-screen flex flex-col">
-    <nav class="flex items-center justify-between px-6 md:px-16 py-4">
+
+  <!-- HERO CON FOTO DEL LOCAL -->
+  <header class="min-h-screen flex flex-col bg-cover bg-center relative"
+          style="background-image: url('img/local-hero.jpg');">
+    <!-- overlay oscuro -->
+    <div class="absolute inset-0 bg-black/65 backdrop-blur-[2px]"></div>
+
+    <!-- NAV -->
+    <nav class="relative z-10 flex items-center justify-between px-6 md:px-16 py-4">
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-pink-500/40 border border-pink-300/60 flex items-center justify-center text-xs tracking-[0.2em] uppercase">
           1814
         </div>
         <div>
           <p class="text-xs uppercase tracking-[0.3em] text-pink-300">Boutique Salon</p>
-          <p class="text-sm text-slate-300">Hair · Nails · Beauty</p>
+          <p class="text-sm text-slate-200">Hair · Nails · Beauty</p>
         </div>
       </div>
 
       <a href="#turnos"
-         class="hidden md:inline-flex text-xs font-medium tracking-wide px-4 py-2 rounded-full border border-pink-400/70 hover:bg-pink-500/10 transition">
+         class="hidden md:inline-flex text-xs font-medium tracking-wide px-4 py-2 rounded-full border border-pink-400/70 text-slate-100 hover:bg-pink-500/10 transition">
         Reservar turno
       </a>
     </nav>
 
-    <main class="flex-1 flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-16 pb-16">
-      <!-- Texto -->
-      <div class="max-w-lg space-y-6">
+    <!-- HERO CONTENT -->
+    <main class="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-center gap-10 px-6 md:px-16 pb-16">
+      <!-- Texto principal -->
+      <div class="max-w-xl space-y-6">
         <p class="uppercase tracking-[0.3em] text-xs text-pink-300">Boutique Salon 1814 · Cañuelas</p>
 
         <h1 class="text-4xl md:text-5xl font-semibold leading-tight">
-          Tu <span class="text-pink-300">ritual de belleza</span> en manos de Ivi y su equipo.
+          Tu <span class="text-pink-300">lugar favorito</span> para uñas, pestañas y mimos de belleza.
         </h1>
 
-        <p class="text-sm text-slate-300 leading-relaxed">
-          Color, cortes, uñas, pestañas y cuidado capilar en un espacio íntimo, cálido y pensado para mimarte.
+        <p class="text-sm md:text-base text-slate-200 leading-relaxed">
+          Un espacio íntimo, prolijo y cálido donde cada detalle está pensado para que salgas sintiéndote
+          más linda, más segura y con ganas de sacarte mil fotos.
         </p>
 
         <div class="flex flex-wrap gap-3">
@@ -49,41 +66,43 @@
           </a>
 
           <a href="#servicios"
-             class="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-slate-600 text-xs font-medium hover:bg-slate-900/60 transition">
+             class="inline-flex items-center justify-center px-4 py-2.5 rounded-full border border-slate-500 text-xs font-medium hover:bg-slate-900/60 transition">
             Ver servicios
           </a>
         </div>
 
-        <div class="flex flex-wrap gap-4 text-[11px] text-slate-300">
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Color & highlights</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Uñas esculpidas</span>
-          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Pestañas</span>
+        <div class="flex flex-wrap gap-4 text-[11px] text-slate-200">
+          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Uñas esculpidas & semi</span>
+          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Pestañas & cejas</span>
+          <span class="px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700">Cuidado capilar</span>
         </div>
       </div>
 
-      <!-- Card / Agenda -->
+      <!-- Tarjeta tipo agenda -->
       <div class="w-full max-w-sm">
         <div class="relative rounded-3xl bg-gradient-to-b from-pink-500/40 via-slate-900 to-slate-950 border border-pink-300/50 p-4 overflow-hidden shadow-xl">
           <div class="absolute -right-10 -top-16 w-40 h-40 bg-pink-400/20 blur-3xl"></div>
           <div class="absolute -left-10 bottom-0 w-40 h-40 bg-fuchsia-400/10 blur-3xl"></div>
 
-          <div class="rounded-2xl bg-slate-950/60 border border-slate-800 p-4">
+          <div class="relative rounded-2xl bg-slate-950/70 border border-slate-800 p-4">
             <p class="text-xs text-pink-200 uppercase tracking-[0.25em] mb-1">Agenda 1814</p>
-            <p class="text-sm text-slate-200 mb-4">Elegí tu servicio y te confirmamos el horario por WhatsApp.</p>
+            <p class="text-sm text-slate-200 mb-4">
+              Elegí tu servicio y coordinamos tu horario ideal por WhatsApp.
+            </p>
 
             <div class="space-y-3 text-xs">
               <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/80 border border-slate-800">
                 <div>
-                  <p class="font-medium text-slate-100">Color & Brushing</p>
-                  <p class="text-[11px] text-slate-400">Diagnóstico + lavado + brushing.</p>
+                  <p class="font-medium text-slate-100">Uñas semipermanentes</p>
+                  <p class="text-[11px] text-slate-400">Manos prolijas, brillo espejo y cero drama.</p>
                 </div>
                 <span class="text-pink-300 font-semibold">$</span>
               </div>
 
               <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/80 border border-slate-800">
                 <div>
-                  <p class="font-medium text-slate-100">Uñas semipermanentes</p>
-                  <p class="text-[11px] text-slate-400">Cutículas y esmaltado perfecto.</p>
+                  <p class="font-medium text-slate-100">Uñas esculpidas</p>
+                  <p class="text-[11px] text-slate-400">Largo soñado, forma perfecta y diseño a tu estilo.</p>
                 </div>
                 <span class="text-pink-300 font-semibold">$</span>
               </div>
@@ -91,7 +110,7 @@
               <div class="flex items-center justify-between py-2 px-3 rounded-xl bg-slate-900/80 border border-slate-800">
                 <div>
                   <p class="font-medium text-slate-100">Lifting de pestañas</p>
-                  <p class="text-[11px] text-slate-400">Mirada intensificada, sin máscara.</p>
+                  <p class="text-[11px] text-slate-400">Mirada abierta, natural y sin máscara.</p>
                 </div>
                 <span class="text-pink-300 font-semibold">$</span>
               </div>
@@ -102,52 +121,108 @@
               Reservar ahora por WhatsApp
             </a>
 
-            <p class="mt-3 text-[10px] text-slate-400">Horarios flexibles. Consultá agenda semanal.</p>
+            <p class="mt-3 text-[10px] text-slate-400">
+              Horarios flexibles. Consultá agenda de la semana y combos especiales.
+            </p>
           </div>
         </div>
       </div>
     </main>
   </header>
 
-  <!-- SERVICIOS -->
+  <!-- SERVICIOS DESTACADOS -->
   <section id="servicios" class="px-6 md:px-16 py-16 bg-slate-950">
-    <h2 class="text-2xl font-semibold mb-6">Servicios destacados</h2>
+    <h2 class="text-2xl md:text-3xl font-semibold mb-6">Servicios que más piden</h2>
 
     <div class="grid md:grid-cols-3 gap-6 text-sm text-slate-300">
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-4">
-        <h3 class="font-medium text-slate-50 mb-2">Cabello</h3>
-        <ul class="space-y-1 text-[13px]">
-          <li>· Corte & styling</li>
-          <li>· Color, balayage & mechas</li>
-          <li>· Tratamientos nutritivos</li>
-        </ul>
-      </div>
-
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-4">
+      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-5">
         <h3 class="font-medium text-slate-50 mb-2">Uñas</h3>
         <ul class="space-y-1 text-[13px]">
-          <li>· Semipermanente</li>
-          <li>· Esculpidas</li>
-          <li>· Nail art simple</li>
+          <li>· Esmaltado semipermanente</li>
+          <li>· Uñas esculpidas</li>
+          <li>· Retiro y mantenimiento</li>
+          <li>· Nail art delicado y elegante</li>
         </ul>
       </div>
 
-      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-4">
+      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-5">
         <h3 class="font-medium text-slate-50 mb-2">Pestañas & Cejas</h3>
         <ul class="space-y-1 text-[13px]">
           <li>· Lifting de pestañas</li>
           <li>· Perfilado de cejas</li>
-          <li>· Diseño natural</li>
+          <li>· Diseño natural para todos los días</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl bg-slate-900/70 border border-slate-800 p-5">
+        <h3 class="font-medium text-slate-50 mb-2">Cabello & Beauty</h3>
+        <ul class="space-y-1 text-[13px]">
+          <li>· Brushing y peinados</li>
+          <li>· Tratamientos de brillo y nutrición</li>
+          <li>· Packs “finde” para salir divina</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="px-6 md:px-16 py-8 border-t border-slate-800 text-[11px] text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
-    <span>Boutique Salon 1814 · Cañuelas</span>
-    <span>Diseño demo para presentación · Abraxas Group</span>
+  <!-- PRÓXIMAMENTE CURSOS -->
+  <section class="px-6 md:px-16 pb-16 bg-slate-950">
+    <div class="rounded-3xl border border-pink-400/40 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 p-6 md:p-10">
+      <p class="text-xs uppercase tracking-[0.3em] text-pink-300 mb-2">Próximamente</p>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-4">Cursos y mentorías para futuras beauty artists</h2>
+      <p class="text-sm md:text-base text-slate-200 max-w-2xl mb-5">
+        Si siempre te gustó el mundo de la estética y querés aprender uñas, pestañas o cómo armar tu propio espacio,
+        Ivi está preparando formaciones pensadas para mujeres reales, con tips prácticos y lo que no se cuenta en redes.
+      </p>
+      <div class="flex flex-wrap gap-3 text-[12px] text-slate-200 mb-5">
+        <span class="px-3 py-1 rounded-full bg-pink-500/15 border border-pink-400/60">Taller de uñas para principiantes</span>
+        <span class="px-3 py-1 rounded-full bg-pink-500/15 border border-pink-400/60">Lifting de pestañas paso a paso</span>
+        <span class="px-3 py-1 rounded-full bg-pink-500/15 border border-pink-400/60">Cómo armar tu mini estudio</span>
+      </div>
+      <p class="text-sm text-pink-200">
+        Dejá tu consulta por WhatsApp y sé de las primeras en enterarte de las fechas y promos.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER + SOBRE IVI -->
+  <footer class="px-6 md:px-16 py-10 border-t border-slate-800 bg-slate-950">
+    <div class="grid md:grid-cols-2 gap-8 text-[13px] text-slate-300 mb-6">
+      <div>
+        <h3 class="text-sm font-semibold text-slate-50 mb-2">Sobre Ivi</h3>
+        <p class="leading-relaxed">
+          Ivi es la mente y el corazón detrás de Boutique Salon 1814. Lleva más de
+          <span class="text-pink-200 font-semibold">10 años trabajando en estética</span> y nunca dejó de estudiar:
+          se forma constantemente con mentores y mentoras reconocidos del sector, probando técnicas nuevas y
+          eligiendo solo lo que realmente funciona en la vida real de sus clientas. Ama los detalles,
+          las charlas de confianza y que te vayas sintiéndote un poquito más poderosa que cuando entraste.
+        </p>
+      </div>
+
+      <div class="md:text-right space-y-2 text-[12px]">
+        <p class="text-slate-400">Boutique Salon 1814 · Cañuelas, Buenos Aires</p>
+        <p class="text-slate-400">Turnos y consultas solo por WhatsApp.</p>
+        <p class="text-slate-500 text-[11px]">Landing demo desarrollada junto a Abraxas Group.</p>
+      </div>
+    </div>
+
+    <div class="text-[11px] text-slate-500 flex flex-col md:flex-row items-center justify-between gap-2">
+      <span>© <span id="year"></span> Boutique Salon 1814. Todos los derechos reservados.</span>
+      <span>Diseño pensado para que vos solo tengas que venir a relajarte.</span>
+    </div>
   </footer>
 
+  <!-- BOTÓN FLOTANTE WHATSAPP NEÓN -->
+  <a href="https://wa.me/5492226511061?text=Hola%20Ivi%2C%20quiero%20un%20turno%20en%20Boutique%20Salon%201814"
+     class="fixed bottom-5 right-5 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-500 text-white
+            text-sm font-semibold whatsapp-neon hover:bg-emerald-400 transition transform hover:-translate-y-0.5">
+    <span>WhatsApp</span>
+    <span class="text-lg">💬</span>
+  </a>
+
+  <!-- Año automático -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
