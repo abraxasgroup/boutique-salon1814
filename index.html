@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Salon 1814 – Cañuelas</title>
+  <meta name="description" content="Uñas, pestañas y belleza en Cañuelas. Reservá tu turno por WhatsApp." />
+  <meta property="og:title" content="Boutique Salon 1814 – Cañuelas" />
+  <meta property="og:description" content="Un espacio íntimo y cálido para uñas, pestañas y mimos de belleza." />
+  <meta property="og:image" content="img/local-hero.jpg" />
+  <meta name="theme-color" content="#080810" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --pink:       #f472b6;
+      --pink-deep:  #ec4899;
+      --indigo:     #818cf8;
+      --bg:         #080810;
+      --surface:    #0f0f1a;
+      --border:     rgba(244,114,182,0.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: #f1f1f5;
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    .display { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── Glows ── */
+    .wa-glow   { box-shadow: 0 0 12px rgba(34,197,94,.7), 0 0 28px rgba(34,197,94,.35); }
+    .pink-glow { box-shadow: 0 0 20px rgba(236,72,153,.4), 0 0 40px rgba(236,72,153,.18); }
+
+    /* ── Gradient text ── */
+    .grad-pink {
+      background: linear-gradient(130deg, #f9a8d4, #f472b6, #fda4af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Dot pattern bg ── */
+    .dot-bg {
+      background-image: radial-gradient(rgba(244,114,182,.1) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+
+    /* ── Grain overlay ── */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .5;
+    }
+
+    /* ── Nav blur ── */
+    .nav-blur {
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(8,8,16,.85);
+      border-bottom: 1px solid rgba(244,114,182,.08);
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Gallery masonry ── */
+    .gallery-cols {
+      columns: 3;
+      column-gap: 10px;
+    }
+    .gallery-cols .gal-item {
+      break-inside: avoid;
+      margin-bottom: 10px;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery-cols .gal-item img {
+      display: block;
+      width: 100%;
+      transition: transform .5s ease;
+    }
+    .gallery-cols .gal-item:hover img { transform: scale(1.04); }
+
+    @media (max-width: 640px) {
+      .gallery-cols { columns: 2; }
+    }
+
+    /* ── Pricing card ── */
+    .price-card {
+      transition: transform .3s ease;
+    }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-card.featured {
+      box-shadow: 0 0 0 1px rgba(244,114,182,.45), 0 24px 64px rgba(236,72,153,.14);
+    }
+
+    /* ── Abraxas section ── */
+    .abraxas-bg {
+      background: linear-gradient(140deg, #04040f 0%, #080318 45%, #04040f 100%);
+      border-top: 1px solid rgba(99,102,241,.18);
+    }
+
+    /* ── Float button pulse ── */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.5); }
+      70%  { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    .wa-float { animation: pulse-ring 2.8s ease-out infinite; }
+
+    /* ── Hero height fix on mobile ── */
+    @media (max-width: 768px) {
+      #hero { min-height: 100svh; }
+    }
+  </style>
+</head>
+
+<!-- ════════════════════════════════════════════
+     ⚙️  SALON CONFIG — editá esto para cada cliente
+════════════════════════════════════════════ -->
+<script>
+const SALON = {
+  nombre:    "Boutique Salon 1814",
+  tagline:   "Hair · Nails · Beauty",
+  duena:     "Ivi",
+  ciudad:    "Cañuelas, Buenos Aires",
+  whatsapp:  "5492226511061",
+  instagram: "boutiquesalon1814",
+  waTexto:   "Hola Ivi, quiero reservar un turno en Boutique Salon 1814 💅",
+
+  servicios: [
+    {
+      icono: "💅",
+      titulo: "Uñas",
+      items: [
+        "Esmaltado semipermanente",
+        "Uñas esculpidas",
+        "Retiro y mantenimiento",
+        "Nail art delicado y elegante",
+      ],
+    },
+    {
+      icono: "✨",
+      titulo: "Pestañas & Cejas",
+      items: [
+        "Lifting de pestañas",
+        "Perfilado de cejas",
+        "Diseño natural para todos los días",
+      ],
+    },
+    {
+      icono: "💇‍♀️",
+      titulo: "Cabello & Beauty",
+      items: [
+        "Brushing y peinados",
+        "Tratamientos de brillo y nutrición",
+        "Packs 'finde' para salir divina",
+      ],
+    },
+  ],
+
+  precios: [
+    {
+      nombre:      "Turno Simple",
+      precio:      "Desde $8.500",
+      desc:        "Un servicio a elección",
+      items:       ["Semipermanente manos", "Lifting de pestañas", "Brushing express"],
+      cta:         "Quiero este turno",
+      destacado:   false,
+    },
+    {
+      nombre:      "Pack Completa",
+      precio:      "Desde $16.000",
+      desc:        "El combo más pedido 🔥",
+      items:       ["Semi manos + pies", "Diseño a elección", "Hidratación incluida", "Foto del resultado 📸"],
+      cta:         "Quiero el pack",
+      destacado:   true,
+    },
+    {
+      nombre:      "Experiencia Full",
+      precio:      "Desde $24.000",
+      desc:        "El mimo total",
+      items:       ["Uñas esculpidas", "Lifting + cejas", "Tratamiento capilar", "Prioridad de agenda 💅"],
+      cta:         "Quiero la experiencia",
+      destacado:   false,
+    },
+  ],
+
+  testimonios: [
+    {
+      nombre: "Caro M.",
+      texto:  "Las uñas me duraron tres semanas perfectas. Ivi tiene una paciencia y un talento increíble, ya no voy a ningún otro lado.",
+      stars:  5,
+    },
+    {
+      nombre: "Sofi R.",
+      texto:  "El lifting de pestañas me cambió la vida. Me levanto y ya estoy arreglada. Lo recomiendo a todas mis amigas.",
+      stars:  5,
+    },
+    {
+      nombre: "Rocío G.",
+      texto:  "El ambiente del local es hermoso, te sentís mimada de verdad. Y siempre propone diseños re lindos.",
+      stars:  5,
+    },
+  ],
+
+  galeria: [
+    { url: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80&fit=crop", alt: "Nail art detalle" },
+    { url: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=500&q=80&fit=crop", alt: "Uñas rosa" },
+    { url: "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&fit=crop", alt: "Salón interior" },
+    { url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80&fit=crop", alt: "Uñas semi" },
+    { url: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80&fit=crop", alt: "Beauty salon" },
+    { url: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80&fit=crop", alt: "Resultado final" },
+  ],
+};
+</script>
+
+<body class="bg-[#080810] text-slate-50">
+
+<!-- ══════════════════ NAV ══════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur">
+  <div class="flex items-center justify-between px-5 md:px-14 py-3.5">
+    <div class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-full bg-pink-500/25 border border-pink-300/40 flex items-center justify-center text-[9px] tracking-[.2em] uppercase text-pink-200">
+        1814
+      </div>
+      <div>
+        <p class="text-[10px] uppercase tracking-[.3em] text-pink-300 leading-none" id="nav-nombre"></p>
+        <p class="text-[11px] text-slate-400 leading-none mt-0.5">Hair · Nails · Beauty</p>
+      </div>
+    </div>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="#servicios" class="text-xs text-slate-400 hover:text-slate-100 transition">Servicios</a>
+      <a href="#galeria"   class="text-xs text-slate-400 hover:text-slate-100 transition">Galería</a>
+      <a href="#precios"   class="text-xs text-slate-400 hover:text-slate-100 transition">Precios</a>
+      <a id="nav-wa" href="#" class="text-xs font-medium px-4 py-2 rounded-full bg-pink-500/12 border border-pink-400/45 text-pink-200 hover:bg-pink-500/22 transition">
+        Reservar turno
+      </a>
+    </div>
+    <a id="mobile-wa" href="#" class="md:hidden text-[11px] font-medium px-3 py-1.5 rounded-full bg-pink-500/15 border border-pink-400/40 text-pink-200">
+      Turno 💅
+    </a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<header id="hero" class="min-h-screen flex flex-col bg-cover bg-center relative pt-16"
+        style="background-image: url('img/local-hero.jpg');">
+
+  <div class="absolute inset-0 bg-gradient-to-b from-black/72 via-black/58 to-[#080810]"></div>
+
+  <!-- Glow orbs -->
+  <div class="absolute top-1/3 right-1/3 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-1/3 left-1/4 w-56 h-56 bg-fuchsia-500/8 rounded-full blur-3xl pointer-events-none"></div>
+
+  <main class="relative z-10 flex-1 flex flex-col md:flex-row items-center justify-center gap-10 px-5 md:px-14 pb-20 pt-10">
+
+    <!-- Copy -->
+    <div class="max-w-xl space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-400/28 text-[11px] tracking-[.25em] uppercase text-pink-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-pink-400 animate-pulse"></span>
+        <span id="hero-badge"></span>
+      </div>
+
+      <h1 class="display text-5xl md:text-6xl font-semibold leading-[1.08] text-slate-50">
+        Tu <em class="grad-pink not-italic">lugar favorito</em><br />
+        para uñas, pestañas<br />y mimos de belleza.
+      </h1>
+
+      <p class="text-sm md:text-[15px] text-slate-300 leading-relaxed max-w-md">
+        Un espacio íntimo, prolijo y cálido donde cada detalle está pensado para que salgas sintiéndote
+        más linda, más segura y con ganas de sacarte mil fotos.
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <a id="hero-wa" href="#" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-pink-500 text-sm font-semibold hover:bg-pink-400 transition-all pink-glow">
+          💅 Pedir turno por WhatsApp
+        </a>
+        <a href="#servicios" class="inline-flex items-center px-5 py-3 rounded-full border border-white/14 text-xs font-medium hover:bg-white/5 transition text-slate-300">
+          Ver servicios ↓
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-2 text-[11px] text-slate-400">
+        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/8">Uñas esculpidas & semi</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/8">Pestañas & cejas</span>
+        <span class="px-3 py-1 rounded-full bg-white/5 border border-white/8">Cuidado capilar</span>
+      </div>
+    </div>
+
+    <!-- Tarjeta Agenda -->
+    <div class="w-full max-w-sm">
+      <div class="relative rounded-3xl bg-gradient-to-b from-pink-500/22 via-[#0f0f1a] to-[#080810] border border-pink-400/38 p-5 shadow-2xl overflow-hidden">
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-pink-400/14 blur-2xl rounded-full pointer-events-none"></div>
+
+        <p class="text-[10px] text-pink-300 uppercase tracking-[.3em] mb-1">Agenda 1814</p>
+        <p class="text-[13px] text-slate-300 mb-4">Elegí tu servicio y coordinamos tu horario ideal por WhatsApp.</p>
+
+        <div class="space-y-2" id="hero-menu">
+          <!-- JS inserta ítems de menú -->
+        </div>
+
+        <a id="hero-card-wa" href="#" class="mt-5 w-full inline-flex items-center justify-center px-4 py-3 rounded-full bg-pink-500 text-[13px] font-semibold hover:bg-pink-400 transition-all pink-glow">
+          Reservar ahora por WhatsApp
+        </a>
+        <p class="mt-2.5 text-[10px] text-slate-600 text-center">Horarios flexibles · Consultá combos especiales</p>
+      </div>
+    </div>
+  </main>
+</header>
+
+
+<!-- ══════════════════ GALERÍA ══════════════════ -->
+<section id="galeria" class="px-5 md:px-14 py-20 relative">
+  <div class="absolute inset-0 dot-bg opacity-40 pointer-events-none"></div>
+  <div class="relative">
+    <div class="flex items-end justify-between mb-8">
+      <div class="reveal">
+        <p class="text-[10px] uppercase tracking-[.3em] text-pink-400 mb-2">Trabajos reales</p>
+        <h2 class="display text-3xl md:text-4xl font-semibold">Cada detalle,<br />hecho con amor.</h2>
+      </div>
+      <a id="ig-desktop" href="#" target="_blank" rel="noopener"
+         class="reveal hidden md:inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-pink-300 transition">
+        Ver más en Instagram →
+      </a>
+    </div>
+    <div class="gallery-cols" id="galeria-grid"></div>
+    <div class="mt-5 text-center md:hidden">
+      <a id="ig-mobile" href="#" target="_blank" rel="noopener"
+         class="text-xs text-slate-400 hover:text-pink-300 transition">
+        Ver más en Instagram →
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ SERVICIOS ══════════════════ -->
+<section id="servicios" class="px-5 md:px-14 py-20 bg-[#0a0a14]">
+  <div class="mb-10 reveal">
+    <p class="text-[10px] uppercase tracking-[.3em] text-pink-400 mb-2">Lo que hacemos</p>
+    <h2 class="display text-3xl md:text-4xl font-semibold">Servicios que más piden.</h2>
+  </div>
+  <div id="servicios-grid" class="grid md:grid-cols-3 gap-5"></div>
+</section>
+
+
+<!-- ══════════════════ PRECIOS ══════════════════ -->
+<section id="precios" class="px-5 md:px-14 py-20">
+  <div class="text-center mb-12 reveal">
+    <p class="text-[10px] uppercase tracking-[.3em] text-pink-400 mb-2">Invertí en vos</p>
+    <h2 class="display text-3xl md:text-4xl font-semibold mb-3">Elegí tu experiencia.</h2>
+    <p class="text-[13px] text-slate-400 max-w-sm mx-auto">
+      Precios de referencia. Para combos y promos de temporada, consultá directo por WhatsApp.
+    </p>
+  </div>
+  <div id="precios-grid" class="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto"></div>
+</section>
+
+
+<!-- ══════════════════ TESTIMONIOS ══════════════════ -->
+<section id="testimonios" class="px-5 md:px-14 py-20 bg-[#0a0a14] relative">
+  <div class="absolute inset-0 dot-bg opacity-25 pointer-events-none"></div>
+  <div class="relative">
+    <div class="text-center mb-12 reveal">
+      <p class="text-[10px] uppercase tracking-[.3em] text-pink-400 mb-2">Lo que dicen ellas</p>
+      <h2 class="display text-3xl md:text-4xl font-semibold">Clientas que ya se enamoraron. 💕</h2>
+    </div>
+    <div id="testimonios-grid" class="grid md:grid-cols-3 gap-5"></div>
+  </div>
+</section>
+
+
+<!-- ══════════════════ CURSOS ══════════════════ -->
+<section class="px-5 md:px-14 py-20">
+  <div class="reveal rounded-3xl border border-pink-400/22 bg-gradient-to-r from-[#080810] via-[#100820] to-[#080810] p-8 md:p-12 relative overflow-hidden">
+    <div class="absolute right-0 top-0 w-72 h-72 bg-pink-400/8 blur-3xl rounded-full pointer-events-none"></div>
+    <p class="text-[10px] uppercase tracking-[.3em] text-pink-300 mb-2">Próximamente</p>
+    <h2 class="display text-3xl md:text-4xl font-semibold mb-4 max-w-xl">
+      Cursos y mentorías para futuras beauty artists.
+    </h2>
+    <p class="text-[13px] md:text-sm text-slate-300 max-w-2xl mb-6 leading-relaxed">
+      Si siempre te gustó el mundo de la estética y querés aprender uñas, pestañas o cómo armar tu propio espacio,
+      Ivi está preparando formaciones pensadas para mujeres reales, con tips prácticos y lo que no se cuenta en redes.
+    </p>
+    <div class="flex flex-wrap gap-2 text-[12px] text-slate-300 mb-6">
+      <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/35">Taller de uñas para principiantes</span>
+      <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/35">Lifting de pestañas paso a paso</span>
+      <span class="px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-400/35">Cómo armar tu mini estudio</span>
+    </div>
+    <a id="cursos-wa" href="#" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-pink-500/12 border border-pink-400/45 text-sm text-pink-200 hover:bg-pink-500/22 transition">
+      💬 Anotarme a la lista de espera
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════ SOBRE IVI ══════════════════ -->
+<section class="px-5 md:px-14 py-20 bg-[#0a0a14]">
+  <div class="max-w-2xl reveal">
+    <p class="text-[10px] uppercase tracking-[.3em] text-pink-400 mb-4">Quién está detrás</p>
+    <h2 class="display text-4xl md:text-5xl font-semibold mb-6">Hola, soy Ivi. ✨</h2>
+    <p class="text-[15px] text-slate-300 leading-relaxed mb-4">
+      Llevo más de <span class="text-pink-300 font-medium">10 años trabajando en estética</span> y nunca dejé de estudiar:
+      me formo constantemente con mentores reconocidos del sector, probando técnicas nuevas y eligiendo solo lo que
+      realmente funciona en la vida real de mis clientas.
+    </p>
+    <p class="text-[15px] text-slate-300 leading-relaxed mb-6">
+      Amo los detalles, las charlas de confianza y que te vayas sintiéndote un poquito más poderosa que cuando entraste.
+      Boutique Salon 1814 es mi espacio, mi proyecto y mi pasión.
+    </p>
+    <a id="ivi-ig" href="#" target="_blank" rel="noopener"
+       class="inline-flex items-center gap-2 text-sm text-pink-300 hover:text-pink-200 transition font-medium">
+      📸 Seguime en Instagram
+    </a>
+  </div>
+</section>
+
+
+<!-- ══════════════════ ABRAXAS B2B PITCH ══════════════════ -->
+<section class="abraxas-bg px-5 md:px-14 py-24 relative overflow-hidden">
+
+  <!-- Líneas decorativas -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-gradient-to-b from-transparent via-indigo-500/18 to-transparent"></div>
+    <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full border border-indigo-500/8"></div>
+    <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full border border-indigo-500/10"></div>
+    <div class="absolute top-1/2 -translate-y-1/2 right-0 w-80 h-80 bg-indigo-600/6 blur-3xl rounded-full"></div>
+  </div>
+
+  <div class="relative max-w-3xl mx-auto text-center reveal">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/28 text-[11px] tracking-[.22em] uppercase text-indigo-300 mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+      Abraxas Group · Cañuelas
+    </div>
+
+    <h2 class="display text-4xl md:text-5xl lg:text-6xl font-semibold text-slate-50 mb-5 leading-[1.1]">
+      ¿Tu salón merece<br />
+      <span class="text-indigo-300">una web así</span>?
+    </h2>
+
+    <p class="text-[15px] text-slate-300 max-w-xl mx-auto mb-10 leading-relaxed">
+      En <strong class="text-slate-100">Abraxas Group</strong> construimos presencias digitales para salones de belleza,
+      nail studios y spas en toda Argentina. Entregamos en
+      <span class="text-indigo-300 font-semibold">72 horas</span>, listo para publicar.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+      <div class="reveal rounded-xl bg-white/[.03] border border-white/[.06] p-4 text-center">
+        <p class="text-2xl mb-2">🚀</p>
+        <p class="text-[12px] text-slate-300 font-medium">Entrega en 72hs</p>
+      </div>
+      <div class="reveal rounded-xl bg-white/[.03] border border-white/[.06] p-4 text-center">
+        <p class="text-2xl mb-2">📱</p>
+        <p class="text-[12px] text-slate-300 font-medium">100% mobile-first</p>
+      </div>
+      <div class="reveal rounded-xl bg-white/[.03] border border-white/[.06] p-4 text-center">
+        <p class="text-2xl mb-2">💬</p>
+        <p class="text-[12px] text-slate-300 font-medium">WhatsApp integrado</p>
+      </div>
+      <div class="reveal rounded-xl bg-white/[.03] border border-white/[.06] p-4 text-center">
+        <p class="text-2xl mb-2">✏️</p>
+        <p class="text-[12px] text-slate-300 font-medium">Fácil de editar</p>
+      </div>
+    </div>
+
+    <a id="abraxas-wa" href="#"
+       class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all shadow-xl hover:shadow-indigo-500/28">
+      💬 Quiero una web así para mi negocio
+    </a>
+    <p class="mt-4 text-[11px] text-slate-600">Respondemos en el día · Sin compromiso</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer class="px-5 md:px-14 py-10 border-t border-white/[.05] bg-[#050510]">
+  <div class="grid md:grid-cols-3 gap-8 text-[13px] text-slate-500 mb-8">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <div class="w-7 h-7 rounded-full bg-pink-500/18 border border-pink-300/28 flex items-center justify-center text-[8px] tracking-[.15em] text-pink-300">
+          1814
+        </div>
+        <span class="text-slate-200 font-medium text-sm" id="footer-nombre"></span>
+      </div>
+      <p class="text-[12px] leading-relaxed">
+        Uñas, pestañas y mimos de belleza en <span id="footer-ciudad"></span>.
+      </p>
+    </div>
+    <div>
+      <p class="text-slate-300 font-medium text-[11px] mb-3 uppercase tracking-wider">Links rápidos</p>
+      <div class="space-y-2 text-[12px]">
+        <div><a href="#servicios"  class="hover:text-pink-300 transition">Servicios</a></div>
+        <div><a href="#galeria"    class="hover:text-pink-300 transition">Galería</a></div>
+        <div><a href="#precios"    class="hover:text-pink-300 transition">Precios</a></div>
+        <div><a id="footer-ig" href="#" target="_blank" class="hover:text-pink-300 transition">Instagram</a></div>
+      </div>
+    </div>
+    <div class="md:text-right">
+      <p class="text-slate-300 font-medium text-[11px] mb-3 uppercase tracking-wider">Contacto</p>
+      <div class="space-y-2 text-[12px]">
+        <div><a id="footer-wa" href="#" class="hover:text-pink-300 transition">Reservar por WhatsApp</a></div>
+        <div><a id="footer-ig2" href="#" target="_blank" class="hover:text-pink-300 transition" id="footer-ig-handle"></a></div>
+      </div>
+      <p class="text-[11px] text-slate-700 mt-5">
+        Desarrollado por <a href="https://abraxas-group.lat" target="_blank" rel="noopener"
+          class="text-indigo-500 hover:text-indigo-400 transition">Abraxas Group</a>
+      </p>
+    </div>
+  </div>
+  <div class="border-t border-white/[.04] pt-5 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-700">
+    <span>© <span id="year"></span> <span id="footer-copy-nombre"></span>. Todos los derechos reservados.</span>
+    <span>Hecho con amor en Argentina 🇦🇷</span>
+  </div>
+</footer>
+
+
+<!-- ══════════════════ FLOAT WHATSAPP ══════════════════ -->
+<a id="float-wa" href="#"
+   class="wa-float fixed bottom-5 right-5 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-500 text-white text-sm font-semibold wa-glow hover:bg-emerald-400 transition-all hover:-translate-y-0.5 active:translate-y-0">
+  <span>WhatsApp</span>
+  <span>💬</span>
+</a>
+
+
+<!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script>
+/* ─── 1. Helpers ─────────────────────────── */
+const waUrl = () =>
+  `https://wa.me/${SALON.whatsapp}?text=${encodeURIComponent(SALON.waTexto)}`;
+
+const igUrl = () =>
+  `https://instagram.com/${SALON.instagram}`;
+
+function setHref(id, url) {
+  const el = document.getElementById(id);
+  if (el) el.href = url;
+}
+function setText(id, text) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = text;
+}
+
+/* ─── 2. Bind URLs / static text ─────────── */
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Nav & hero WA links
+  ['nav-wa','mobile-wa','hero-wa','hero-card-wa','cursos-wa','float-wa'].forEach(id => setHref(id, waUrl()));
+
+  // Instagram links
+  ['ig-desktop','ig-mobile','footer-ig','ivi-ig'].forEach(id => setHref(id, igUrl()));
+
+  // Abraxas WA — número propio de Abraxas
+  setHref('abraxas-wa',
+    `https://wa.me/${SALON.whatsapp}?text=${encodeURIComponent(
+      'Hola, vi el sitio de Boutique Salon 1814 y quiero una web así para mi negocio.'
+    )}`
+  );
+
+  // Texts
+  setText('nav-nombre',        SALON.nombre);
+  setText('hero-badge',        `${SALON.nombre} · ${SALON.ciudad}`);
+  setText('footer-nombre',     SALON.nombre);
+  setText('footer-ciudad',     SALON.ciudad);
+  setText('footer-copy-nombre',SALON.nombre);
+  setText('year', new Date().getFullYear());
+
+  const footerIg2 = document.getElementById('footer-ig2');
+  if (footerIg2) {
+    footerIg2.href = igUrl();
+    footerIg2.textContent = `@${SALON.instagram}`;
+  }
+
+  /* ─── 3. Hero mini-menu ─────────────────── */
+  const menuItems = SALON.servicios.map(s => s.titulo);
+  const heroMenu  = document.getElementById('hero-menu');
+  if (heroMenu) {
+    menuItems.forEach(titulo => {
+      const div = document.createElement('div');
+      div.className =
+        'flex items-center justify-between py-2.5 px-3.5 rounded-xl ' +
+        'bg-white/[.04] border border-white/[.06] hover:border-pink-400/28 transition cursor-pointer';
+      div.innerHTML = `
+        <p class="text-[13px] font-medium text-slate-100">${titulo}</p>
+        <span class="text-pink-400 text-sm">→</span>
+      `;
+      div.addEventListener('click', () => window.open(waUrl(), '_blank'));
+      heroMenu.appendChild(div);
+    });
+  }
+
+  /* ─── 4. Galería ────────────────────────── */
+  const galeriaGrid = document.getElementById('galeria-grid');
+  if (galeriaGrid) {
+    SALON.galeria.forEach((foto, i) => {
+      const div = document.createElement('div');
+      div.className = 'gal-item reveal';
+      div.style.transitionDelay = `${i * 80}ms`;
+      div.innerHTML = `<img src="${foto.url}" alt="${foto.alt}" loading="lazy" />`;
+      galeriaGrid.appendChild(div);
+    });
+  }
+
+  /* ─── 5. Servicios ──────────────────────── */
+  const serviciosGrid = document.getElementById('servicios-grid');
+  if (serviciosGrid) {
+    SALON.servicios.forEach(serv => {
+      const div = document.createElement('div');
+      div.className =
+        'reveal rounded-2xl bg-white/[.025] border border-white/[.06] ' +
+        'hover:border-pink-500/28 p-6 transition-all hover:bg-white/[.04]';
+      div.innerHTML = `
+        <div class="text-2xl mb-3">${serv.icono}</div>
+        <h3 class="font-semibold text-slate-100 mb-4 text-[15px]">${serv.titulo}</h3>
+        <ul class="space-y-2">
+          ${serv.items.map(item => `
+            <li class="flex items-center gap-2 text-[13px] text-slate-300">
+              <span class="text-pink-400 text-[9px]">✦</span>${item}
+            </li>
+          `).join('')}
+        </ul>
+      `;
+      serviciosGrid.appendChild(div);
+    });
+  }
+
+  /* ─── 6. Precios ────────────────────────── */
+  const preciosGrid = document.getElementById('precios-grid');
+  if (preciosGrid) {
+    SALON.precios.forEach(pack => {
+      const div = document.createElement('div');
+      div.className = `price-card reveal flex flex-col gap-4 rounded-3xl p-6 ${
+        pack.destacado
+          ? 'featured bg-gradient-to-b from-pink-500/18 to-[#080810]/95 border border-pink-400/48'
+          : 'bg-white/[.025] border border-white/[.06]'
+      }`;
+      div.innerHTML = `
+        <div class="text-[10px] uppercase tracking-[.25em] font-medium ${
+          pack.destacado ? 'text-pink-300' : 'text-slate-600'
+        }">${pack.destacado ? '⭐ Más elegido' : '&nbsp;'}</div>
+        <div>
+          <p class="text-[11px] text-slate-500 mb-0.5">${pack.desc}</p>
+          <h3 class="text-[17px] font-semibold text-slate-50">${pack.nombre}</h3>
+        </div>
+        <p class="display text-3xl font-bold ${pack.destacado ? 'grad-pink' : 'text-slate-50'}">${pack.precio}</p>
+        <ul class="space-y-2 flex-1">
+          ${pack.items.map(item => `
+            <li class="flex items-center gap-2 text-[13px] text-slate-200">
+              <span class="text-emerald-400 text-xs">✓</span>${item}
+            </li>
+          `).join('')}
+        </ul>
+        <a href="${waUrl()}" target="_blank"
+           class="mt-1 inline-flex items-center justify-center w-full px-4 py-3 rounded-full text-sm font-semibold transition-all ${
+             pack.destacado
+               ? 'bg-pink-500 hover:bg-pink-400 text-white pink-glow'
+               : 'border border-slate-700 hover:border-pink-400/55 hover:bg-white/[.04] text-slate-300'
+           }">
+          ${pack.cta}
+        </a>
+      `;
+      preciosGrid.appendChild(div);
+    });
+  }
+
+  /* ─── 7. Testimonios ────────────────────── */
+  const testimoniosGrid = document.getElementById('testimonios-grid');
+  if (testimoniosGrid) {
+    SALON.testimonios.forEach(t => {
+      const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+      const div = document.createElement('div');
+      div.className =
+        'reveal rounded-2xl bg-white/[.025] border border-white/[.06] p-6 flex flex-col gap-3';
+      div.innerHTML = `
+        <p class="text-yellow-400 text-xs tracking-widest">${stars}</p>
+        <p class="text-[14px] text-slate-300 leading-relaxed italic flex-1">"${t.texto}"</p>
+        <div class="flex items-center gap-3 mt-2">
+          <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(t.nombre)}&background=ec4899&color=fff&size=40&bold=true&rounded=true"
+               alt="${t.nombre}" class="w-10 h-10 rounded-full flex-shrink-0" />
+          <span class="text-sm font-medium text-slate-100">${t.nombre}</span>
+        </div>
+      `;
+      testimoniosGrid.appendChild(div);
+    });
+  }
+
+  /* ─── 8. Scroll Reveal (IntersectionObserver) ── */
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+});
+</script>
+
+</body>
+</html>
